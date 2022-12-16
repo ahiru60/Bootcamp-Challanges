@@ -8,6 +8,7 @@ public class Challange_02{
             Scanner scan =new Scanner(System.in);
 
             String input = scan.nextLine();
+            
             boolean result = validator(input);
             System.out.println(result);
 
@@ -16,10 +17,19 @@ public class Challange_02{
 
     static boolean validator(String textString){
 
-        Stack<Character> textLine = new Stack<Character>();
-        for(char textChar: textString.toCharArray() ){
+        
 
-            textLine.push(textChar);
+
+        Stack<Character> textLine = new Stack<Character>();
+        for(char textChar: TextString.toCharArray()){
+            
+            if(textChar=='{'||textChar=='}'||textChar=='['||textChar==']'||textChar=='('||textChar==')'){
+
+                textLine.push(textChar);
+
+            }
+
+            
 
         }
 

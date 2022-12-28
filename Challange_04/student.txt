@@ -1,0 +1,7 @@
+3
+adithya, karunarathna
+english 80 50 70
+amal, hirunath rajapaksha 
+maths 0 50 40 80 90 56 45 89
+akash, Senevirathne
+Science 70 78 50 88

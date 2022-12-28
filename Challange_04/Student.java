@@ -1,11 +1,12 @@
-class Studnet{
+package challange_04;
+public class Student{
 
     private String firstName;
     private String lastName;
     private String age;
     private double avarageMark;
 
-    Student(String firstName,String lastName,String age){
+    void setStudent(String firstName,String lastName,String age){
 
         this.firstName =firstName;
         this.lastName =lastName;

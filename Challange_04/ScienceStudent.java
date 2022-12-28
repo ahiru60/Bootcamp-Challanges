@@ -8,16 +8,18 @@ public class ScienceStudent extends Student {
 
     setMarks(int[] marks){
 
-      this.attendance = marks[0];
-      this.project = marks[1];
-      this.midterm = marks[2];
-      this.finalExam = marks[3];
+      this.attendance = marks[1];
+      this.project = marks[2];
+      this.midterm = marks[3];
+      this.finalExam = marks[4];
 
     }
 
     double getFinalmark(){
 
         double finalMark = attendance*0.1+project*0.3+midterm*0.3+finalExam*0.3;
+
+        BufferedEriter writer = new BufferedReader(new FileWriter("output.txt"));
 
         return finalMark;
 

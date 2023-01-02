@@ -1,50 +1,63 @@
+package challange_04;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 public class StudentProfileCreator {
+
     
-    public static void main(String[] args) {
+    
+    public static void main(String[] args){
         try {
             BufferedReader reader = new BufferedReader(new FileReader("student.txt"));
-            //System.out.println(reader.readLine());
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
             int numberOfStudents= Integer.parseInt(reader.readLine());
+
+            String outputEng="";
+            String outputMath="";
+            String outputSci="";
 
             for(int i=0;i<numberOfStudents;i++){
                 
                String nameRead = reader.readLine();
                
             String[] name = Arrays.stream(nameRead.split(",")).toArray(size -> new String[size]);
-            //System.out.println(Arrays.toString(name));
                String marksRead =  reader.readLine();
+
             String[] marks = Arrays.stream(marksRead.split(" ")).toArray(size -> new String[size]);
-               //System.out.println(marks[0].toUpperCase());
-               EnglishStudent[] studentsEng = new EnglishStudent[];
-               ScienceStudent[] studentsSci = new ScienceStudent[];
-               MathStudent[] studentsMath = new MathStudent[];
+                   
             switch (marks[0].toUpperCase()) {
                 case "ENGLISH":
-                studentsEng[i] = new EnglishStudent();
-                studentsEng[i].setStudent(name[0],name[1]);
-                studentsEng[i].setMarks(marks[1],marks[2],marks[3]);
+                EnglishStudent studentsEng = new EnglishStudent();
+                studentsEng.setStudent(name);
+                studentsEng.setMarks(marks);
+                System.out.println("sci exed");
+                outputEng += studentsEng.getStudent()+" English "+studentsEng.getAvarageMark()+" "+studentsEng.getFinalTestMark()+"/n";
+                //writer.write(studentsEng.getStudent()+" English "+studentsEng.getAvarageMark()+" "+studentsEng.getFinalTestMark()+"/n");
                     break;
                 case "SCIENCE":
-                studentsSci[i] = new EnglishStudent();
-                studentsSci[i].setStudent(name[0],name[1]);
-                studentsSci[i].setMarks(marks[1],marks[2],marks[3],marks[4]);
+                ScienceStudent studentsSci = new ScienceStudent();
+                studentsSci.setStudent(name);
+                studentsSci.setMarks(marks);
                 
+                //writer.write(studentsSci.getStudent()+" Science "+studentsSci.getAvarageMark()+" "+studentsSci.getFinalTestMark()+"/n");
+                outputSci += studentsSci.getStudent()+" Science "+studentsSci.getAvarageMark()+" "+studentsSci.getFinalTestMark()+"/n";
                     break;
                 case "MATHS":
-                studentsMath[i] = new EnglishStudent();
-                studentsMath[i].setStudent(name[0],name[1]);
-                studentsMath[i].setMarks(marks[1],marks[2],marks[3],marks[4],marks[5],marks[6],marks[7],marks[8]);
-                    
+                MathStudent studentsMath = new MathStudent();
+                studentsMath.setStudent(name);
+                studentsMath.setMarks(marks);
+                //writer.write(studentsMath.getStudent()+" Maths "+studentsMath.getAvarageMark()+" "+studentsMath.getFinalTestMark()+"/n"); 
+                outputMath += studentsMath.getStudent()+" Maths "+studentsMath.getAvarageMark()+" "+studentsMath.getFinalTestMark()+"/n"; 
                     break;
             
                 default:
                     break;
             }
-               
+            writer.write(outputEng);
+            writer.write(outputSci);
+            writer.write(outputMath);
+               writer.close();
             }
             
         reader.close();
@@ -55,5 +68,5 @@ public class StudentProfileCreator {
         
 
     }
-    
 }
+

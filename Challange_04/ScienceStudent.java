@@ -1,4 +1,5 @@
 package challange_04;
+import java.io.*;
 public class ScienceStudent extends Student {
 
     private int attendance;
@@ -6,22 +7,33 @@ public class ScienceStudent extends Student {
     private int midterm;
     private int finalExam;
 
-    setMarks(int[] marks){
+    public void setMarks(String[] marks){
 
-      this.attendance = marks[1];
-      this.project = marks[2];
-      this.midterm = marks[3];
-      this.finalExam = marks[4];
+      this.attendance = Integer.parseInt(marks[1]);
+      this.project = Integer.parseInt(marks[2]);
+      this.midterm = Integer.parseInt(marks[3]);
+      this.finalExam = Integer.parseInt(marks[4]);
 
     }
 
-    double getFinalmark(){
+    public double getAvarageMark(){
 
-        double finalMark = attendance*0.1+project*0.3+midterm*0.3+finalExam*0.3;
+        double avarageMark = attendance*0.1+project*0.3+midterm*0.3+finalExam*0.3;
 
-        BufferedEriter writer = new BufferedReader(new FileWriter("output.txt"));
+        try {
+          BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+          writer.write("");
+        } catch (Exception e) {
+          // TODO: handle exception
+        }
 
-        return finalMark;
+        return avarageMark;
+
+    }
+
+    public double getFinalTestMark(){
+
+      return finalExam;
 
     }
 
